@@ -23,7 +23,8 @@ export default defineComponent({
 
     async function PadelRackets() {
       const padelRacket = await GetPadelRacket().then(resp => {
-        console.log("Inside home with resp: " + resp)
+        console.log("Inside home with resp:")
+        console.log(resp[0].fields.RacketName);
       });
     }
 
