@@ -1,4 +1,4 @@
-const Airtable = require('airtable/build/airtable.browser');
+const Airtable = require('airtable');
 
 Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
