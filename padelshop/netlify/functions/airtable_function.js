@@ -13,7 +13,7 @@ exports.handler = function(event, context, callback) {
     base('Table 1')
       .select({
         maxRecords: 100,
-        view: 'all'
+        view: "Grid view"
       })
       .eachPage(
         function page(records, fetchNextPage) {
