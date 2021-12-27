@@ -1,33 +1,38 @@
 <template>
   <div class="home">
+    <div v-for="(racket, index) in airtable.rackets" :key="index">
+      {{racket.RacketName}}
+      {{racket.Price}}
+      {{racket.ImgContent}}
+    </div>
     <img alt="Racket logo" src="https://cocky-kowalevski-3f8a74.netlify.app/head-graphene-360-alpha-pro.jpg">
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import { GetPadelRacket } from "@/API/AirTableAPICaller"
+import { AirTableRecord } from "@/Models/AirTableRecord"
+import PadelRacket from "@/Models/AirTablePadelRacket"
 
 export default defineComponent({
   name: 'Home',
   setup() {
-    // const axiosInstance = axios.create({
-    //   baseURL: "/.netlify/functions",
-    //   timeout: 10000
-    // });
+    const airtable = reactive({
+      rackets: [] as AirTableRecord<PadelRacket>[]
+    });
 
-    // axiosInstance.get("airtable_function").then(resp => {
-    //   console.log(resp.data);
-    // });
     PadelRackets();
 
     async function PadelRackets() {
       const padelRacket = await GetPadelRacket().then(resp => {
-        console.log("Inside home with resp:")
-        console.log(resp.records[0].fields.RacketName)
+        airtable.rackets = resp.records.filter(racket => racket.fields.RacketName != "");
       });
     }
 
+    return {
+      airtable
+    }
   },
 });
 </script>

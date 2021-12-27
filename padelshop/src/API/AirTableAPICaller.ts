@@ -1,6 +1,6 @@
 import axios from 'axios'
 import PadelRacket from "@/Models/AirTablePadelRacket";
-import AirTableResonse from '@/Models/AirTableRecord';
+import { AirTableResonse } from '@/Models/AirTableRecord';
 
 const axiosInstance = axios.create({
     baseURL: "/.netlify/functions",
