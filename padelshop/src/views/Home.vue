@@ -6,19 +6,27 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import axios from 'axios'
+import { GetPadelRacket } from "@/API/AirTableAPICaller"
 
 export default defineComponent({
   name: 'Home',
   setup() {
-    const axiosInstance = axios.create({
-      baseURL: "/.netlify/functions",
-      timeout: 10000
-    });
+    // const axiosInstance = axios.create({
+    //   baseURL: "/.netlify/functions",
+    //   timeout: 10000
+    // });
 
-    axiosInstance.get("airtable_function").then(resp => {
-      console.log(resp.data);
-    });
+    // axiosInstance.get("airtable_function").then(resp => {
+    //   console.log(resp.data);
+    // });
+    PadelRackets();
+
+    async function PadelRackets() {
+      const padelRacket = await GetPadelRacket().then(resp => {
+        console.log("Inside home with resp: " + resp)
+      });
+    }
+
   },
 });
 </script>
