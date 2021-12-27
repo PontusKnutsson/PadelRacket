@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <div v-for="(racket, index) in airtable.rackets" :key="index">
-      {{racket.RacketName}}
-      {{racket.Price}}
-      {{racket.ImgContent}}
+      {{racket.fields.RacketName}}
+      {{racket.fields.Price}}
+      {{racket.fields.ImgContent}}
     </div>
     <img alt="Racket logo" src="https://cocky-kowalevski-3f8a74.netlify.app/head-graphene-360-alpha-pro.jpg">
   </div>
