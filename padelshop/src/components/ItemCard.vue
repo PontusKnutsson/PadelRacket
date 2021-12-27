@@ -1,7 +1,9 @@
 <template>
     <div class="card">
         <img :src="props.imageSrc" :alt="props.imageAltText">
-        <slot></slot>
+        <div class="card__info">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
@@ -30,12 +32,18 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .card {
-        height: 100px;
-        width: 50px;
+        display: inline-block;
+        min-height: 300px;
+        width: 200px;
+        box-shadow: -10px 8px 15px lightgray, /*left and bottom*/
+            10px 8px 15px lightgray; /*right and bottom*/
 
         img {
             width: 100%;
-            height: 70px;
+        }
+
+        &__info {
+            color: lightgray;
         }
     }
 </style>
