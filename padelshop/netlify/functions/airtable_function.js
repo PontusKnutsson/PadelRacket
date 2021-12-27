@@ -1,11 +1,13 @@
-const Airtable = require('airtable');
+const Airtable = require('airtable/build/airtable.browser');
 
-Airtable.configure({
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: process.env.AIRTABLE_API_KEY
-});
+// Airtable.configure({
+//     endpointUrl: 'https://api.airtable.com',
+//     apiKey: process.env.AIRTABLE_API_KEY
+// });
 
-const base = Airtable.Base("appN7I9DtKRH4S7er");
+const base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('appN7I9DtKRH4S7er');
+
+// const base = Airtable.Base("appN7I9DtKRH4S7er");
 
 exports.handler = function(event, context, callback) {
     base('Table 1').select({
