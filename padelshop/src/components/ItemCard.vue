@@ -33,17 +33,29 @@ export default defineComponent({
 <style lang="scss" scoped>
     .card {
         display: inline-block;
-        min-height: 300px;
         width: 200px;
-        box-shadow: -10px 8px 15px lightgray, /*left and bottom*/
-            10px 8px 15px lightgray; /*right and bottom*/
+        // box-shadow: -10px 8px 15px lightgray, /*left and bottom*/
+        //     10px 8px 15px lightgray; /*right and bottom*/
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 0 11px;
+        box-shadow: 0 7px 14px rgb(0 0 0 / 10%);
+        transition: all ease .25s;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -15px rgb(0 0 0 / 20%);
+        }
 
         img {
             width: 100%;
+            height: 200px;
         }
 
         &__info {
-            color: lightgray;
+            background-color: #DEDEDE;
+            padding: 5px;
+            margin-top: -4px;
         }
     }
 </style>

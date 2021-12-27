@@ -5,10 +5,12 @@
       {{racket.fields.Price}}
       {{racket.fields.ImgContent}}
     </div> -->
-    <ItemCard :imageSrc="racket.fields.ImgContent" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
-      <div><strong>{{racket.fields.RacketName}}</strong></div>
-      <div>{{racket.fields.Price}}SEK</div>
-    </ItemCard>
+    <div class="cards">
+      <ItemCard :imageSrc="racket.fields.ImgContent" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
+        <div><strong>{{racket.fields.RacketName}}</strong></div>
+        <div>{{racket.fields.Price}}SEK</div>
+      </ItemCard>
+    </div>
     <!-- <img alt="Racket logo" src="https://cocky-kowalevski-3f8a74.netlify.app/head-graphene-360-alpha-pro.jpg"> -->
   </div>
 </template>
@@ -45,3 +47,12 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+  }
+</style>
