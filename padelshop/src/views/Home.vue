@@ -7,7 +7,8 @@
     </div> -->
     <ItemCard :imageSrc="racket.fields.ImgConent" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
       {{racket.fields.RacketName}}<br />
-      {{racket.fields.Price}}
+      {{racket.fields.Price}}<br />
+      {{racket.fields.ImgConent}}
     </ItemCard>
     <!-- <img alt="Racket logo" src="https://cocky-kowalevski-3f8a74.netlify.app/head-graphene-360-alpha-pro.jpg"> -->
   </div>
