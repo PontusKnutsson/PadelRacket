@@ -1,6 +1,6 @@
 import axios from 'axios'
 import PadelRacket from "@/Models/AirTablePadelRacket";
-import AirTableRecord from '@/Models/AirTableRecord';
+import AirTableResonse from '@/Models/AirTableRecord';
 
 const axiosInstance = axios.create({
     baseURL: "/.netlify/functions",
@@ -13,9 +13,8 @@ const axiosInstance = axios.create({
 
 
 
-export async function GetPadelRacket() : Promise<AirTableRecord<PadelRacket>[]> {
+export async function GetPadelRacket() : Promise<AirTableResonse<PadelRacket>> {
     const data = axiosInstance.get("airtable_function").then(resp => {
-        console.log(resp.data)
         return resp.data;
     });
 
