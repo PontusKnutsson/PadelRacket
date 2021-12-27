@@ -17,7 +17,7 @@ export default defineComponent({
   },
   setup() {
     const axiosInstance = axios.create({
-      baseURL: "/netlify/functions",
+      baseURL: "/.netlify/functions",
       timeout: 10000
     });
 
