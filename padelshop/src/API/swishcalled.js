@@ -19,7 +19,7 @@ const request = {
 }
 
 export async function GetSwishQRCode() {
-    const result = await axios.post("https://mpc.getswish.net/qrg-swish	/api/v1/prefilled", request, { headers: {
+    const result = await axios.post("https://mpc.getswish.net/qrg-swish/api/v1/prefilled", request, { headers: {
         'content-type': 'application/json'
       }
     });
