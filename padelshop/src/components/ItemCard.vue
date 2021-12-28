@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <img :src="imageSrc" @error="OnImgError()">
+        <img :src="imgSrc" @error="OnImgError()">
         <div class="card__info">
             <slot></slot>
         </div>
