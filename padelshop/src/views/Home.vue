@@ -25,7 +25,7 @@ import { GetPadelRacket } from "@/API/AirTableAPICaller"
 import { AirTableRecord } from "@/Models/AirTableRecord"
 import PadelRacket from "@/Models/AirTablePadelRacket"
 
-import { GetSwishQRCode } from "@/API/swishcalled";
+import { GetSwishQRCode } from "@/API/GetSwishQRCode";
 
 export default defineComponent({
   name: 'Home',
