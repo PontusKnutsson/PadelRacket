@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <img :src="props.imageSrc" :alt="props.imageAltText">
+        <img :src="imageSrc" @error="OnImgError()">
         <div class="card__info">
             <slot></slot>
         </div>
@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 
 export default defineComponent({
     props: {
@@ -23,8 +23,16 @@ export default defineComponent({
     },
     setup(props) {
         
+        const imgError = ref(false);
+        const imgSrc = computed(() => !imgError.value ? props.imageSrc : require(`@/assets/no_image.jpg`));
+
+        function OnImgError() {
+            imgError.value = true;
+        }
+
         return {
-            props
+            imgSrc,
+            OnImgError
         }
     },
 })
@@ -46,6 +54,7 @@ export default defineComponent({
         &:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px -15px rgb(0 0 0 / 20%);
+            cursor: pointer;
         }
 
         img {
