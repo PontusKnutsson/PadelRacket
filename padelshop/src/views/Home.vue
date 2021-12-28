@@ -37,7 +37,9 @@ export default defineComponent({
 
     async function PadelRackets() {
       const padelRacket = await GetPadelRacket().then(resp => {
-        airtable.rackets = resp.records.filter(racket => racket.fields.RacketName != "");
+        const filteredResponse = resp.records.filter(racket => racket.fields.RacketName != "" && racket.fields.RacketName != undefined && racket.fields.RacketName != null);
+        console.log(filteredResponse);
+        airtable.rackets = filteredResponse;
       });
     }
 
