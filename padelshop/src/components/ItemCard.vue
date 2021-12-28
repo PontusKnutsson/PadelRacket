@@ -27,6 +27,7 @@ export default defineComponent({
         const imgSrc = computed(() => !imgError.value ? props.imageSrc : require(`@/assets/no_image.jpg`));
 
         function OnImgError() {
+            console.log("OnImgError called");
             imgError.value = true;
         }
 
