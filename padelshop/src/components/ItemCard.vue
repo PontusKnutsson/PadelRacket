@@ -49,7 +49,7 @@ export default defineComponent({
         border-radius: 10px;
         overflow: hidden;
         margin: 0 11px;
-        box-shadow: 0 7px 14px rgb(0 0 0 / 10%);
+        box-shadow: 0 7px 14px rgb(0 0 0 / 15%);
         transition: all ease .25s;
         margin-bottom: 20px;
 
@@ -65,7 +65,7 @@ export default defineComponent({
         }
 
         &__info {
-            background-color: #DEDEDE;
+            background-color: #e2e2e2;
             padding: 5px;
             margin-top: -4px;
             height: 65px;

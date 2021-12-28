@@ -18,8 +18,14 @@ export default defineComponent({
 
 
 <style lang="scss">
+
+body {
+  margin: 0;
+}
 .content {
+  margin: auto;
   margin-top: 70px;
+  width: 800px;
 }
 
 #app {

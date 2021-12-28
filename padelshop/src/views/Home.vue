@@ -5,6 +5,8 @@
       {{racket.fields.Price}}
       {{racket.fields.ImgContent}}
     </div> -->
+
+    <input type="search" class="racket-search" placeholder="Sök bland racken">
     <div class="cards">
       <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
         <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
@@ -23,6 +25,8 @@ import { GetPadelRacket } from "@/API/AirTableAPICaller"
 import { AirTableRecord } from "@/Models/AirTableRecord"
 import PadelRacket from "@/Models/AirTablePadelRacket"
 
+import { GetSwishQRCode } from "@/API/swishcalled";
+
 export default defineComponent({
   name: 'Home',
   components: {
@@ -34,6 +38,7 @@ export default defineComponent({
     });
 
     PadelRackets();
+    SwishQRCode();
 
     async function PadelRackets() {
       const padelRacket = await GetPadelRacket().then(resp => {
@@ -41,6 +46,10 @@ export default defineComponent({
         console.log(filteredResponse);
         airtable.rackets = filteredResponse;
       });
+    }
+
+    async function SwishQRCode() {
+      GetSwishQRCode();
     }
 
     return {
@@ -64,5 +73,29 @@ export default defineComponent({
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .racket-search {
+    width: 100%;
+    border-radius: 5px;
+    height: 36px;
+    border: 1px solid hsla(0,0%,41.2%,.68);
+    outline: none;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50em;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    // pointer-events: none;
+  }
+
+  input[type="search"]:focus::-webkit-search-cancel-button {
+    opacity: .3;
+    pointer-events: all;
   }
 </style>
