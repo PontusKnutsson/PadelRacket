@@ -34,6 +34,7 @@ export default defineComponent({
     .card {
         display: inline-block;
         width: 200px;
+        height: 265px;
         // box-shadow: -10px 8px 15px lightgray, /*left and bottom*/
         //     10px 8px 15px lightgray; /*right and bottom*/
         border-radius: 10px;
@@ -56,6 +57,15 @@ export default defineComponent({
             background-color: #DEDEDE;
             padding: 5px;
             margin-top: -4px;
+            height: 65px;
+
+            &--heading {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
 </style>
