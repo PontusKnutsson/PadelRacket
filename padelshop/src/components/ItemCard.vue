@@ -51,6 +51,7 @@ export default defineComponent({
         margin: 0 11px;
         box-shadow: 0 7px 14px rgb(0 0 0 / 10%);
         transition: all ease .25s;
+        margin-bottom: 20px;
 
         &:hover {
             transform: translateY(-5px);

@@ -1,6 +1,19 @@
 <template>
+  <Topbar />
   <router-view/>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import Topbar from "@/components/Topbar.vue";
+
+export default defineComponent({
+  components: {
+    Topbar
+  },
+})
+</script>
+
 
 <style lang="scss">
 #app {
@@ -8,6 +21,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  margin: 0;
 }
 
 #nav {
