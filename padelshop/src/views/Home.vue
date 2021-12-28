@@ -6,7 +6,7 @@
       {{racket.fields.ImgContent}}
     </div> -->
     <div class="cards">
-      <ItemCard :imageSrc="racket.fields.ImgContent" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
+      <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
         <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
         <div>{{racket.fields.Price}}SEK</div>
       </ItemCard>
