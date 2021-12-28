@@ -69,13 +69,13 @@ export default defineComponent({
             margin-top: -4px;
             height: 65px;
 
-            &--heading {
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+            // &--heading {
+            //     display: -webkit-box;
+            //     -webkit-line-clamp: 2;
+            //     -webkit-box-orient: vertical;
+            //     overflow: hidden;
+            //     text-overflow: ellipsis;
+            // }
         }
     }
 </style>

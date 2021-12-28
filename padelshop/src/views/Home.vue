@@ -7,7 +7,7 @@
     </div> -->
     <div class="cards">
       <ItemCard :imageSrc="racket.fields.ImgContent" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
-        <div class="card__info--heading"><strong>{{racket.fields.RacketName}}</strong></div>
+        <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
         <div>{{racket.fields.Price}}SEK</div>
       </ItemCard>
     </div>
@@ -56,5 +56,13 @@ export default defineComponent({
     flex-wrap: wrap;
     margin: auto;
     justify-content: center;
+  }
+
+  .card__heading {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>
