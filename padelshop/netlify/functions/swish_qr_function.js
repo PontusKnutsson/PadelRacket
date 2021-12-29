@@ -18,7 +18,7 @@ const request = {
     }
 }
 
-exports.handler =  function(event, context, callback) {
+exports.handler =  async function(event, context, callback) {
     axios.post("https://mpc.getswish.net/qrg-swish/api/v1/prefilled", request, { headers: {
         'content-type': 'application/json'
       }
