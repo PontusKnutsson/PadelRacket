@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 
 export async function GetSwishQRCode() {
     const data = axiosInstance.get("swish_qr_function").then(resp => {
-        console.log("Swish response: " + resp.data)
+        return resp.data;
     });
 
     return data;

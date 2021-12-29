@@ -13,12 +13,14 @@
         <div>{{racket.fields.Price}}SEK</div>
       </ItemCard>
     </div>
+
+    <img :src="swishQR">
     <!-- <img alt="Racket logo" src="https://cocky-kowalevski-3f8a74.netlify.app/head-graphene-360-alpha-pro.jpg"> -->
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, ref } from 'vue';
 import ItemCard from "@/components/ItemCard.vue"
 
 import { GetPadelRacket } from "@/API/AirTableAPICaller"
@@ -37,6 +39,8 @@ export default defineComponent({
       rackets: [] as AirTableRecord<PadelRacket>[]
     });
 
+    const swishQR = ref("");
+
     PadelRackets();
     SwishQRCode();
 
@@ -49,11 +53,12 @@ export default defineComponent({
     }
 
     async function SwishQRCode() {
-      GetSwishQRCode();
+      GetSwishQRCode().then(resp => swishQR.value = "data:image/png;base64," + resp);
     }
 
     return {
-      airtable
+      airtable,
+      swishQR
     }
   },
 });

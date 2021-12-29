@@ -23,7 +23,6 @@ exports.handler =  function(event, context, callback) {
         'content-type': 'application/json'
       }
     }).then(resp => {
-        console.log("Please work...: " + resp.Body)
         const body = Buffer.from(resp.data, 'binary').toString('base64')
         const response = {
             statusCode: 200,
