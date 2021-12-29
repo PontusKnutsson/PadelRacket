@@ -23,12 +23,18 @@ exports.handler =  function(event, context, callback) {
         'content-type': 'application/json'
       }
     }).then(resp => {
-        console.log("Resp.data: " + resp.data);
-        console.log("Resp from buffer: " + Buffer.from(resp.data, 'binary').toString())
+        // console.log("Resp.data: " + resp.data);
+        // console.log("Resp from buffer: " + Buffer.from(resp.data, 'binary').toString())
         const body = resp.data;
+        let dataUrl = await new Promise(resolve => {
+            let reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(body);
+          });
+        console.log("DataUrl: " + dataUrl);
         const response = {
             statusCode: 200,
-            body: body,
+            body: dataUrl,
             headers: {
             'content-type': 'plain/text',
             'cache-control': 'Cache-Control: max-age=300, public'
