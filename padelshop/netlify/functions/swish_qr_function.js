@@ -25,7 +25,7 @@ exports.handler =  function(event, context, callback) {
     }).then(resp => {
         console.log("Resp.data: " + resp.data);
         console.log("Resp from buffer: " + Buffer.from(resp.data, 'binary').toString())
-        const body = Buffer.from(resp.data, 'binary').toString('base64')
+        const body = resp.data;
         const response = {
             statusCode: 200,
             body: body,
