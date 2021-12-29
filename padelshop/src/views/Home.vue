@@ -59,7 +59,7 @@ export default defineComponent({
             var srcData = fileLoadedEvent?.target?.result;
             console.log("File data: " + srcData);
         }
-        fileReader.readAsDataURL(resp.Blob());
+        fileReader.readAsDataURL(resp);
       });
     }
 
