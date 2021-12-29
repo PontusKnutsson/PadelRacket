@@ -53,7 +53,7 @@ export default defineComponent({
     }
 
     async function SwishQRCode() {
-      GetSwishQRCode().then(resp => swishQR.value = "data:image/png;base64," + resp);
+      GetSwishQRCode().then(resp => swishQR.value = resp);
     }
 
     return {
