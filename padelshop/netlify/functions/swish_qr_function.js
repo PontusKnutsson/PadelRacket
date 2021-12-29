@@ -23,13 +23,12 @@ exports.handler =  function(event, context, callback) {
         'content-type': 'application/json'
       }
     }).then(resp => {
-        console.log("Resp from swish in function: " + resp)
-        const body = JSON.stringify({ resp })
+        const body = resp;
         const response = {
             statusCode: 200,
             body: body,
             headers: {
-            'content-type': 'application/json',
+            'content-type': 'plain/text',
             'cache-control': 'Cache-Control: max-age=300, public'
             }
         }
