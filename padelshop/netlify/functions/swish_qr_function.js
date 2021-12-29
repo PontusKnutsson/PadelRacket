@@ -23,7 +23,7 @@ exports.handler =  function(event, context, callback) {
         'content-type': 'application/json'
       }
     }).then(resp => {
-        console.log("Please work...: " + resp)
+        console.log("Please work...: " + resp.content)
         const body = resp;
         const response = {
             statusCode: 200,
