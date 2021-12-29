@@ -23,6 +23,7 @@ exports.handler =  function(event, context, callback) {
         'content-type': 'application/json'
       }
     }).then(resp => {
+        console.log("Resp from swish in function: " + resp)
         const body = JSON.stringify({ resp })
         const response = {
             statusCode: 200,
