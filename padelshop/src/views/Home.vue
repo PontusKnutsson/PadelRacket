@@ -53,7 +53,14 @@ export default defineComponent({
     }
 
     async function SwishQRCode() {
-      GetSwishQRCode().then(resp => swishQR.value = resp);
+      GetSwishQRCode().then(resp => {
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent) {
+            var srcData = fileLoadedEvent?.target?.result;
+            console.log("File data: " + srcData);
+        }
+        fileReader.readAsDataURL(resp.Blob());
+      });
     }
 
     return {
