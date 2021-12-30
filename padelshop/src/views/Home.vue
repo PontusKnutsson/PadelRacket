@@ -8,7 +8,7 @@
 
     <input type="search" class="racket-search" placeholder="Sök bland racken" @input="FilterRackets">
     <div class="cards">
-      <transition-group name="card-animation" tag="p">
+      <transition-group name="card-animation" tag="p" appear="true">
         <ItemCard class="test" :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
           <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
           <div>{{racket.fields.Price}}SEK</div>
@@ -16,7 +16,7 @@
       </transition-group>
     </div>
 
-    <transition name="no-rackets-animation">
+    <transition name="no-rackets-animation" appear="true">
       <div class="cards__none" v-if="airtable.filteredRackets.length == 0"><h2>Inga rack kunde hittas!</h2></div>
     </transition>
 
