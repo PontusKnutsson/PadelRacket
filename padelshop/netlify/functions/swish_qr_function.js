@@ -1,6 +1,7 @@
 const axios = require("axios");
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const xhr = new XMLHttpRequest();
+import { Blob } from 'buffer';
 
 const request = {
     "format": "png",
@@ -53,7 +54,7 @@ exports.handler = function(event, context, callback) {
     }).then(resp => {
         // console.log("Resp.data: " + resp.data);
         // console.log("Resp from buffer: " + Buffer.from(resp.data, 'binary').toString())
-        const body = resp.data;
+        const body = new Blob([resp.data]);
         const response = {
             statusCode: 200,
             body: body,

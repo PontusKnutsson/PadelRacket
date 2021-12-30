@@ -54,9 +54,7 @@ export default defineComponent({
 
     async function SwishQRCode() {
       GetSwishQRCode().then(resp => {
-        const myBblob = new Blob([resp]);
-        console.log("myBlob: " + myBblob)
-        console.log("URL object: " + window.URL.createObjectURL(myBblob));
+        console.log(resp);
         // var xml = (new XMLSerializer).serializeToString(resp);
         // swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
       });
