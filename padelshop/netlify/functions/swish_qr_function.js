@@ -1,7 +1,7 @@
 const axios = require("axios");
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const xhr = new XMLHttpRequest();
-import { Blob } from 'buffer';
+const buffer = require("buffer");
 
 const request = {
     "format": "png",
