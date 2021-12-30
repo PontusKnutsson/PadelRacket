@@ -106,10 +106,6 @@ export default defineComponent({
     opacity: 0;
   }
 
-  .card-animation-leave-active {
-    position: absolute;
-  }
-
   .card__heading {
     display: -webkit-box;
     -webkit-line-clamp: 2;
