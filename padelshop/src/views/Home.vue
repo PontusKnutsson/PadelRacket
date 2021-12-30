@@ -8,10 +8,12 @@
 
     <input type="search" class="racket-search" placeholder="Sök bland racken" @input="FilterRackets">
     <div class="cards">
-      <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
-        <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
-        <div>{{racket.fields.Price}}SEK</div>
-      </ItemCard>
+      <transition-group name="card-animation" tag="p">
+        <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
+          <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
+          <div>{{racket.fields.Price}}SEK</div>
+        </ItemCard>
+      </transition-group>
     </div>
 
     <div v-html="swishQR"></div>
@@ -89,6 +91,14 @@ export default defineComponent({
     margin: auto;
     justify-content: center;
     margin-top: 20px;
+  }
+
+  .card-animation-enter-active, .card-animation-leave-active {
+    transition: all 1s;
+  }
+
+  .card-animation-enter, .card-animation-leave-to {
+    opacity: 0;
   }
 
   .card__heading {
