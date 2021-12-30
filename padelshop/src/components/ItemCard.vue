@@ -50,7 +50,7 @@ export default defineComponent({
         overflow: hidden;
         margin: 0 11px;
         box-shadow: 0 7px 14px rgb(0 0 0 / 15%);
-        transition: all ease .25s;
+        transition: all ease .5s;
         margin-bottom: 20px;
 
         &:hover {

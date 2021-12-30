@@ -93,12 +93,13 @@ export default defineComponent({
     margin-top: 20px;
   }
 
-  .card-animation-enter-active, .card-animation-leave-active {
-    transition: all 1s;
-  }
-
   .card-animation-enter, .card-animation-leave-to {
     opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .card-animation-leave-active {
+    position: absolute;
   }
 
   .card__heading {
