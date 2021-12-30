@@ -6,7 +6,7 @@
       {{racket.fields.ImgContent}}
     </div> -->
 
-    <input type="search" class="racket-search" placeholder="Sök bland racken">
+    <input type="search" class="racket-search" placeholder="Sök bland racken" @change="FilterRackets">
     <div class="cards">
       <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
         <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
@@ -75,7 +75,8 @@ export default defineComponent({
 
     return {
       airtable,
-      swishQR
+      swishQR,
+      FilterRackets
     }
   },
 });
