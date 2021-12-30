@@ -14,7 +14,6 @@
       </ItemCard>
     </div>
 
-    <img :src="swishQR">
     <div v-html="swishQR"></div>
   </div>
 </template>
@@ -58,7 +57,7 @@ export default defineComponent({
         // var xml = (new XMLSerializer).serializeToString(resp);
         // swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
         console.log(resp);
-        swishQR.value = "data:image/png;base64," + resp;
+        swishQR.value = resp;
       });
     }
 
