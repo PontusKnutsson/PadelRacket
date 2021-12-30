@@ -95,7 +95,6 @@ export default defineComponent({
 
   .card-animation-enter, .card-animation-leave-to {
     opacity: 0;
-    transform: translateY(30px);
   }
 
   .card-animation-leave-active {
