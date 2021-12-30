@@ -49,6 +49,7 @@ export default defineComponent({
         const filteredResponse = resp.records.filter(racket => racket.fields.RacketName != "" && racket.fields.RacketName != undefined && racket.fields.RacketName != null);
         console.log(filteredResponse);
         airtable.rackets = filteredResponse;
+        airtable.filteredRackets = filteredResponse;
       });
     }
 
