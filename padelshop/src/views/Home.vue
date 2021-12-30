@@ -16,6 +16,10 @@
       </transition-group>
     </div>
 
+    <transition name="card-animation">
+      <div class="cards__none" v-if="airtable.filteredRackets.length == 0"><h2>Inga rack kunde hittas!</h2></div>
+    </transition>
+
     <div v-html="swishQR"></div>
   </div>
 </template>
@@ -91,6 +95,11 @@ export default defineComponent({
     margin: auto;
     justify-content: center;
     margin-top: 20px;
+
+    &__none {
+      transition: all ease .5s;
+      text-align: center;
+    }
   }
 
   .card-animation-enter, .card-animation-leave-to {
