@@ -8,7 +8,7 @@
 
     <input type="search" class="racket-search" placeholder="Sök bland racken">
     <div class="cards">
-      <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.rackets" :key="index">
+      <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
         <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
         <div>{{racket.fields.Price}}SEK</div>
       </ItemCard>
@@ -35,7 +35,8 @@ export default defineComponent({
   },
   setup() {
     const airtable = reactive({
-      rackets: [] as AirTableRecord<PadelRacket>[]
+      rackets: [] as AirTableRecord<PadelRacket>[],
+      filteredRackets: [] as AirTableRecord<PadelRacket>[]
     });
 
     const swishQR = ref("");
@@ -61,6 +62,16 @@ export default defineComponent({
       });
     }
 
+    function FilterRackets(event: Event) {
+      const searchValue = (event.target as HTMLInputElement).value;
+      if (searchValue === "" || searchValue == undefined) {
+        airtable.filteredRackets = airtable.rackets;
+      }
+      else {
+        airtable.filteredRackets = airtable.rackets.filter(racket => racket.fields.RacketName.toUpperCase().includes(searchValue.toUpperCase()));
+      }
+    }
+
     return {
       airtable,
       swishQR
@@ -75,6 +86,7 @@ export default defineComponent({
     flex-wrap: wrap;
     margin: auto;
     justify-content: center;
+    margin-top: 20px;
   }
 
   .card__heading {
