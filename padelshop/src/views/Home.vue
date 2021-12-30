@@ -9,14 +9,14 @@
     <input type="search" class="racket-search" placeholder="Sök bland racken" @input="FilterRackets">
     <div class="cards">
       <transition-group name="card-animation" tag="p">
-        <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
+        <ItemCard class="test" :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
           <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
           <div>{{racket.fields.Price}}SEK</div>
         </ItemCard>
       </transition-group>
     </div>
 
-    <transition name="card-animation">
+    <transition name="no-rackets-animation">
       <div class="cards__none" v-if="airtable.filteredRackets.length == 0"><h2>Inga rack kunde hittas!</h2></div>
     </transition>
 
@@ -89,6 +89,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+  .test {
+    transition: all 0.5s ease;
+    display: inline-block;
+  }
+
   .cards {
     display: flex;
     flex-wrap: wrap;
@@ -97,13 +102,18 @@ export default defineComponent({
     margin-top: 20px;
 
     &__none {
-      transition: all ease .1s;
+      transition: all ease .5s;
       text-align: center;
     }
   }
 
   .card-animation-enter, .card-animation-leave-to {
     opacity: 0;
+  }
+
+  .no-rackets-animation-enter, .no-rackets-animation-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
   }
 
   .card__heading {
