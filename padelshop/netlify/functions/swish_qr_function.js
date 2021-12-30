@@ -2,7 +2,7 @@ const axios = require("axios");
 
 
 const request = {
-    "format": "png",
+    "format": "svg",
     "size": 300,
     "transparent": false,
     "amount": {
