@@ -107,8 +107,17 @@ export default defineComponent({
     }
   }
 
-  .card-animation-enter, .card-animation-leave-to {
+  .card-animation-enter-active, .card-animation-leave-active {
+    opacity: 0.5;
+  }
+
+  .card-animation-enter,
+  .card-animation-leave-to {
     opacity: 0;
+  }
+
+  .no-rackets-animation-enter-active, .no-rackets-animation-leave-active {
+    opacity: 0.5;
   }
 
   .no-rackets-animation-enter, .no-rackets-animation-leave-to {
