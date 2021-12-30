@@ -118,6 +118,7 @@ export default defineComponent({
 
   .no-rackets-animation-enter-active, .no-rackets-animation-leave-active {
     opacity: 0.5;
+    transform: translateY(-30px);
   }
 
   .no-rackets-animation-enter, .no-rackets-animation-leave-to {
