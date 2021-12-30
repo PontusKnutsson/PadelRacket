@@ -14,8 +14,7 @@
       </ItemCard>
     </div>
 
-    <img :src="swishQR">
-    <!-- <img alt="Racket logo" src="https://cocky-kowalevski-3f8a74.netlify.app/head-graphene-360-alpha-pro.jpg"> -->
+    <div v-html="swishQR"></div>
   </div>
 </template>
 
@@ -54,9 +53,10 @@ export default defineComponent({
 
     async function SwishQRCode() {
       GetSwishQRCode().then(resp => {
-        console.log(resp);
-        var xml = (new XMLSerializer).serializeToString(resp);
-        swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
+        // console.log(resp);
+        // var xml = (new XMLSerializer).serializeToString(resp);
+        // swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
+        swishQR.value = resp;
       });
     }
 
