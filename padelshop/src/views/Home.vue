@@ -55,8 +55,8 @@ export default defineComponent({
     async function SwishQRCode() {
       GetSwishQRCode().then(resp => {
         console.log(resp);
-        // var xml = (new XMLSerializer).serializeToString(resp);
-        // swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
+        var xml = (new XMLSerializer).serializeToString(resp);
+        swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
       });
     }
 
