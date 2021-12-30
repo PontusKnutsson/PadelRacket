@@ -25,7 +25,7 @@ exports.handler = function(event, context, callback) {
         if (this.readyState == 4 && this.status == 200){
             // var img = document.getElementById('image');
             // var url = window.URL || window.webkitURL;
-            const test = URL.createObjectURL(this.response);
+            const test = window.URL.createObjectURL(this.response);
             console.log(test);
             const response = {
                 statusCode: 200,
