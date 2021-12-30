@@ -54,12 +54,8 @@ export default defineComponent({
 
     async function SwishQRCode() {
       GetSwishQRCode().then(resp => {
-        var fileReader = new FileReader();
-        fileReader.onload = function(fileLoadedEvent) {
-            var srcData = fileLoadedEvent?.target?.result;
-            console.log("File data: " + srcData);
-        }
-        fileReader.readAsDataURL(resp);
+        var xml = (new XMLSerializer).serializeToString(resp);
+        swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
       });
     }
 
