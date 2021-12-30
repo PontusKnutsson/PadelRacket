@@ -97,7 +97,7 @@ export default defineComponent({
     margin-top: 20px;
 
     &__none {
-      transition: all ease .5s;
+      transition: all ease .1s;
       text-align: center;
     }
   }
