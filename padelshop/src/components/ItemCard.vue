@@ -65,7 +65,7 @@ export default defineComponent({
         }
 
         &__info {
-            background-color: #e2e2e2;
+            background-color: #fff;
             padding: 5px;
             margin-top: -4px;
             height: 65px;
