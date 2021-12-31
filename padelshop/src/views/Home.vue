@@ -7,6 +7,9 @@
     </div> -->
 
     <input type="search" class="racket-search" placeholder="Sök bland racken" @input="FilterRackets">
+    <transition name="no-rackets-animation" appear>
+      <div class="cards__none" v-if="airtable.filteredRackets.length == 0"><h2>Inga rack kunde hittas!</h2></div>
+    </transition>
     <div class="cards">
       <transition-group name="card-animation" tag="p" appear>
         <ItemCard class="test" :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
@@ -15,10 +18,6 @@
         </ItemCard>
       </transition-group>
     </div>
-
-    <transition name="no-rackets-animation" appear>
-      <div class="cards__none" v-if="airtable.filteredRackets.length == 0"><h2>Inga rack kunde hittas!</h2></div>
-    </transition>
 
     <div v-html="swishQR"></div>
   </div>
@@ -102,6 +101,7 @@ export default defineComponent({
     margin-top: 20px;
 
     &__none {
+      margin-top: 20px;
       transition: all ease .5s;
       text-align: center;
     }
@@ -117,12 +117,12 @@ export default defineComponent({
   }
 
   .no-rackets-animation-enter-active, .no-rackets-animation-leave-active {
-    opacity: 0.5;
+    // opacity: 0.5;
     transform: translateY(-30px);
   }
 
   .no-rackets-animation-enter, .no-rackets-animation-leave-to {
-    opacity: 0;
+    // opacity: 0;
     transform: translateY(30px);
   }
 
