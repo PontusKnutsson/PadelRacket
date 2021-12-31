@@ -41,7 +41,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .card {
-        // display: inline-block;
+        display: inline-block;
         width: 200px;
         height: 265px;
         // box-shadow: -10px 8px 15px lightgray, /*left and bottom*/
@@ -50,7 +50,7 @@ export default defineComponent({
         overflow: hidden;
         margin: 0 11px;
         box-shadow: 0 7px 14px rgb(0 0 0 / 15%);
-        // transition: all ease .5s;
+        transition: all ease .35s;
         margin-bottom: 20px;
 
         &:hover {
