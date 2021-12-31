@@ -108,7 +108,6 @@ export default defineComponent({
   }
 
   .card-animation-enter-active, .card-animation-leave-active {
-    transform: translateX(-30px);
     opacity: 0.5;
   }
 
