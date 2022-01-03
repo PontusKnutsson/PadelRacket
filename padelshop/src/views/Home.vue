@@ -12,7 +12,7 @@
 
     <div class="cards">
       <transition-group name="card-animation" tag="p" appear>
-        <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index">
+        <ItemCard :imageSrc="racket.fields.PreviewImg" :imageAltText="racket.fields.RacketName" v-for="(racket, index) in airtable.filteredRackets" :key="index" @click="GoToRacketPage(index)">
           <div class="card__heading"><strong>{{racket.fields.RacketName}}</strong></div>
           <div>{{racket.fields.Price}}SEK</div>
         </ItemCard>
@@ -70,7 +70,7 @@ export default defineComponent({
         // console.log(resp);
         // var xml = (new XMLSerializer).serializeToString(resp);
         // swishQR.value = "data:image/svg+xml;charset=utf-8,"+xml;
-        console.log(resp);
+        // console.log(resp);
         swishQR.value = resp;
       });
     }
@@ -85,10 +85,16 @@ export default defineComponent({
       }
     }
 
+    function GoToRacketPage(index: number){
+      const racketId = airtable.filteredRackets[index].id;
+      console.log(`Index: ${index}, RacketId: ${racketId}`)
+    }
+
     return {
       airtable,
       swishQR,
-      FilterRackets
+      FilterRackets,
+      GoToRacketPage
     }
   },
 });
