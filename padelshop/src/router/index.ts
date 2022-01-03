@@ -18,7 +18,15 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/racket/:id',
     name: 'Racket',
-    component: () => import('@/views/Racket.vue')
+    component: () => import('@/views/Racket.vue'),
+    beforeEnter: (to, from, next) => {
+      if (to.params.id == undefined || to.params.id == ""){
+        next('/');
+      }
+      else {
+        next();
+      }
+    }
   }
 ]
 
