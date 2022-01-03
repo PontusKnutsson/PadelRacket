@@ -1,10 +1,9 @@
 <template>
     <div class="racket-info">
         <div class="racket-info__slideshow-images">
-            <img class="racket-info__slideshow-images--image" :class="{ 'racket-info__slideshow-images--image': imgData.active }" :src="imgData.url" 
+            <img class="racket-info__slideshow-images--image" :class="{ 'racket-info__slideshow-images--image--active': imgData.active }" :src="imgData.url" 
             v-for="(imgData, index) in images.list" :key="index">
         </div>
-        <img :src="racket.fields.PreviewImg">
         <div>
             {{racket.fields.RacketName}} - {{racket.fields.Price}}
         </div>
@@ -53,9 +52,10 @@ export default defineComponent({
 
             &--image {
                 width: 100%;
+                display: none;
 
-                &-hidden {
-                    display: none;
+                &-active {
+                    display: initial;
                 }
             }
 
