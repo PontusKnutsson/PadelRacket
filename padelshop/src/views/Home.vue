@@ -19,7 +19,7 @@
       </transition-group>
     </div>
 
-    <div v-html="swishQR"></div>
+    <!-- <div v-html="swishQR"></div> -->
   </div>
 </template>
 
@@ -30,6 +30,7 @@ import ItemCard from "@/components/ItemCard.vue"
 import { GetPadelRacket } from "@/API/AirTableAPICaller"
 import { AirTableRecord } from "@/Models/AirTableRecord"
 import PadelRacket from "@/Models/AirTablePadelRacket"
+import { GetRackets, SetRackets } from "@/_store/RacketStore"
 
 import { GetSwishQRCode } from "@/API/GetSwishQRCode";
 
@@ -50,12 +51,18 @@ export default defineComponent({
     SwishQRCode();
 
     async function PadelRackets() {
-      const padelRacket = await GetPadelRacket().then(resp => {
-        const filteredResponse = resp.records.filter(racket => racket.fields.RacketName != "" && racket.fields.RacketName != undefined && racket.fields.RacketName != null);
-        console.log(filteredResponse);
-        airtable.rackets = filteredResponse;
-        airtable.filteredRackets = filteredResponse;
-      });
+      if (GetRackets() == undefined || GetRackets()?.length == 0){
+          GetPadelRacket().then(resp => {
+            const filteredResponse = resp.records.filter(racket => racket.fields.RacketName != "" && racket.fields.RacketName != undefined && racket.fields.RacketName != null);
+            console.log(filteredResponse);
+            // airtable.rackets = filteredResponse;
+            SetRackets(filteredResponse);
+            airtable.filteredRackets = filteredResponse;
+          });
+      }
+      else {
+        airtable.filteredRackets = GetRackets();
+      }
     }
 
     async function SwishQRCode() {
@@ -71,10 +78,10 @@ export default defineComponent({
     function FilterRackets(event: Event) {
       const searchValue = (event.target as HTMLInputElement).value;
       if (searchValue === "" || searchValue == undefined) {
-        airtable.filteredRackets = airtable.rackets;
+        airtable.filteredRackets = GetRackets();
       }
       else {
-        airtable.filteredRackets = airtable.rackets.filter(racket => racket.fields.RacketName.toUpperCase().includes(searchValue.toUpperCase()));
+        airtable.filteredRackets = GetRackets().filter(racket => racket.fields.RacketName.toUpperCase().includes(searchValue.toUpperCase()));
       }
     }
 
