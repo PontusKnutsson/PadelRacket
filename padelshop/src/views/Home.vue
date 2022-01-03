@@ -27,6 +27,8 @@
 import { defineComponent, reactive, ref } from 'vue';
 import ItemCard from "@/components/ItemCard.vue"
 
+import { useRouter } from 'vue-router'
+
 import { GetPadelRacket } from "@/API/AirTableAPICaller"
 import { AirTableRecord } from "@/Models/AirTableRecord"
 import PadelRacket from "@/Models/AirTablePadelRacket"
@@ -40,6 +42,9 @@ export default defineComponent({
     ItemCard
   },
   setup() {
+
+    const router = useRouter();
+
     const airtable = reactive({
       rackets: [] as AirTableRecord<PadelRacket>[],
       filteredRackets: [] as AirTableRecord<PadelRacket>[]
@@ -87,7 +92,7 @@ export default defineComponent({
 
     function GoToRacketPage(index: number){
       const racketId = airtable.filteredRackets[index].id;
-      console.log(`Index: ${index}, RacketId: ${racketId}`)
+      router.push(`/racket/${racketId}`);
     }
 
     return {
