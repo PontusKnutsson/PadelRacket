@@ -1,8 +1,10 @@
 <template>
     <div class="racket-info">
         <div class="racket-info__slideshow-images">
-            <img class="racket-info__slideshow-images--image" :class="{ 'racket-info__slideshow-images--image--active': imgData.active }" :src="imgData.url" 
+            <img class="racket-info__slideshow-images--image" :class="{ 'racket-info__slideshow-images--image-active': imgData.active }" :src="imgData.url" 
             v-for="(imgData, index) in images.list" :key="index">
+            <div class="racket-info__slideshow-images--arrow"><span>❮</span></div>
+            <div class="racket-info__slideshow-images--arrow racket-info__slideshow-images--arrow-right"><span>❯</span></div>
         </div>
         <div>
             {{racket.fields.RacketName}} - {{racket.fields.Price}}
@@ -59,7 +61,36 @@ export default defineComponent({
                 }
             }
 
+            &--arrow {
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                width: auto;
+                padding: 16px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.6s ease;
+                user-select: none;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding-left: 10px;
 
+                &-right {
+                    right: 0;
+                    padding-left: 0;
+                    padding-right: 10px;
+
+                    &:hover {
+                        box-shadow: inset -16px 0px 19px -18px black;;
+                    }
+                }
+
+                &:hover {
+                    box-shadow: inset 16px 0px 19px -18px black;;
+                }
+            }
         }
     }
 </style>
