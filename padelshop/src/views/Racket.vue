@@ -83,7 +83,7 @@ export default defineComponent({
                     padding-right: 10px;
 
                     &:hover {
-                        box-shadow: inset -16px 0px 19px -18px black;;
+                        box-shadow: inset -16px 0px 19px -18px black !important;
                     }
                 }
 
