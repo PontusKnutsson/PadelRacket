@@ -3,8 +3,8 @@
         <div class="racket-info__slideshow-images">
             <img class="racket-info__slideshow-images--image" :class="{ 'racket-info__slideshow-images--image-active': imgData.active }" :src="imgData.url" 
             v-for="(imgData, index) in images.list" :key="index">
-            <div class="racket-info__slideshow-images--arrow" @click="PrevImage(index)"><span>❮</span></div>
-            <div class="racket-info__slideshow-images--arrow racket-info__slideshow-images--arrow-right" @click="NextImage(index)"><span>❯</span></div>
+            <div class="racket-info__slideshow-images--arrow" @click="PrevImage"><span>❮</span></div>
+            <div class="racket-info__slideshow-images--arrow racket-info__slideshow-images--arrow-right" @click="NextImage"><span>❯</span></div>
         </div>
         <div>
             {{racket.fields.RacketName}} - {{racket.fields.Price}}
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, isMemoSame, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { GetRackets } from "@/_store/RacketStore"
 
@@ -27,6 +27,7 @@ export default defineComponent({
         const images = reactive({
             list: [] as SlideshowImage[]
         });
+        const currentImageIndex = ref(0);
 
         if (racket != undefined){
             const fullViewImages = racket?.fields?.FullImg?.split(",");
@@ -37,16 +38,16 @@ export default defineComponent({
             }
         }
 
-        function NextImage(currentIndex: number) {
-            const currentImage = images.list[currentIndex];
-            const nextImage = currentIndex != images.list.length-1 ? images.list[currentIndex++] : images.list[0];
+        function NextImage() {
+            const currentImage = images.list[currentImageIndex.value];
+            const nextImage = currentImageIndex.value != images.list.length-1 ? images.list[currentImageIndex.value++] : images.list[0];
             currentImage.active = false;
             nextImage.active = true;
         }
 
-        function PrevImage(currentIndex: number) {
-            const currentImage = images.list[currentIndex];
-            const nextImage = currentIndex != 0 ? images.list[currentIndex--] : images.list[images.list.length-1];
+        function PrevImage() {
+            const currentImage = images.list[currentImageIndex.value];
+            const nextImage = currentImageIndex.value != 0 ? images.list[currentImageIndex.value--] : images.list[images.list.length-1];
             currentImage.active = false;
             nextImage.active = true;
         }
