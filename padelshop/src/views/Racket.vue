@@ -40,14 +40,31 @@ export default defineComponent({
 
         function NextImage() {
             const currentImage = images.list[currentImageIndex.value];
-            const nextImage = currentImageIndex.value != images.list.length-1 ? images.list[currentImageIndex.value++] : images.list[0];
+            let nextImage = undefined;
+            if (currentImageIndex.value != images.list.length-1) {
+                nextImage = images.list[currentImageIndex.value++]
+            }
+            else {
+                nextImage = images.list[0];
+                currentImageIndex.value = 0;
+            }
+            // const nextImage = currentImageIndex.value != images.list.length-1 ? images.list[currentImageIndex.value++] : images.list[0];
             currentImage.active = false;
             nextImage.active = true;
         }
 
         function PrevImage() {
             const currentImage = images.list[currentImageIndex.value];
-            const nextImage = currentImageIndex.value != 0 ? images.list[currentImageIndex.value--] : images.list[images.list.length-1];
+            let nextImage = undefined;
+            if (currentImageIndex.value != 0){
+                nextImage = images.list[currentImageIndex.value--];
+            }
+            else {
+                nextImage = images.list[images.list.length-1];
+                currentImageIndex.value = images.list.length-1; 
+            }
+
+            // const nextImage = currentImageIndex.value != 0 ? images.list[currentImageIndex.value--] : images.list[images.list.length-1];
             currentImage.active = false;
             nextImage.active = true;
         }
@@ -84,7 +101,6 @@ export default defineComponent({
                 position: absolute;
                 top: 0;
                 width: auto;
-                padding: 16px;
                 color: white;
                 font-weight: bold;
                 font-size: 18px;
