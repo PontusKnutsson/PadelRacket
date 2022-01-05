@@ -3,8 +3,8 @@
         <div class="racket-info__slideshow-images">
             <img class="racket-info__slideshow-images--image" :class="{ 'racket-info__slideshow-images--image-active': imgData.active }" :src="imgData.url" 
             v-for="(imgData, index) in images.list" :key="index">
-            <div class="racket-info__slideshow-images--arrow"><span>❮</span></div>
-            <div class="racket-info__slideshow-images--arrow racket-info__slideshow-images--arrow-right"><span>❯</span></div>
+            <div class="racket-info__slideshow-images--arrow" @click="PrevImage(index)"><span>❮</span></div>
+            <div class="racket-info__slideshow-images--arrow racket-info__slideshow-images--arrow-right" @click="NextImage(index)"><span>❯</span></div>
         </div>
         <div>
             {{racket.fields.RacketName}} - {{racket.fields.Price}}
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, isMemoSame, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { GetRackets } from "@/_store/RacketStore"
 
@@ -37,10 +37,25 @@ export default defineComponent({
             }
         }
 
+        function NextImage(currentIndex: number) {
+            const currentImage = images.list[currentIndex];
+            const nextImage = currentIndex != images.list.length-1 ? images.list[currentIndex++] : images.list[0];
+            currentImage.active = false;
+            nextImage.active = true;
+        }
+
+        function PrevImage(currentIndex: number) {
+            const currentImage = images.list[currentIndex];
+            const nextImage = currentIndex != 0 ? images.list[currentIndex--] : images.list[images.list.length-1];
+            currentImage.active = false;
+            nextImage.active = true;
+        }
 
         return {
             racket,
-            images
+            images,
+            NextImage,
+            PrevImage
         }
     },
 })
@@ -48,7 +63,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
     .racket-info {
-        
+        max-width: 500px;
+        margin: auto;
+
         &__slideshow-images {
             position: relative;
 
@@ -57,7 +74,7 @@ export default defineComponent({
                 display: none;
 
                 &-active {
-                    display: initial;
+                    display: block;
                 }
             }
 
